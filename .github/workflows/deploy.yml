@@ -1,0 +1,43 @@
+name: MyCircle Deploy
+
+on:
+  push:
+    branches: [ "deploy" ]
+  workflow_dispatch:
+
+jobs:
+  pull_code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH Remote Commands
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          key: ${{secrets.SSH_PRIVATE_KEY}} # key generated on the server
+          host: ${{secrets.HOST_PROD}}
+          username: ${{secrets.USERNAME}}
+          # || true needed because pm2 delete returns 1 when no process is running
+          script_stop: true
+          script: |
+            cd /var/www/html/mycircle
+            git pull origin deploy
+  deploy-fe:
+    runs-on: ubuntu-latest
+    needs: pull_code
+    steps:
+      - uses: actions/checkout@main
+      - name: Run remote ssh commands
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          host: ${{ secrets.HOST_PROD }}
+          username: ${{ secrets.USERNAME }}
+          script_stop: true
+          script: |
+            cd /var/www/html/mycircle/frontend
+            npm ci
+            npm run build
+            cd server
+            npm ci
+            pm2 stop fe || true
+            pm2 delete fe || true
+            pm2 start --name "fe" deploy.js
