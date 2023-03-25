@@ -21,6 +21,24 @@ jobs:
             cd /var/www/html/mycircle
             eval ssh-agent -s
             sudo -E git pull origin master
+  deploy-be:
+    runs-on: ubuntu-latest
+    needs: pull_code
+    steps:
+      - uses: actions/checkout@main
+      - name: Run remote ssh commands
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          host: ${{ secrets.HOST_PROD }}
+          username: ${{ secrets.USERNAME }}
+          script_stop: true
+          script: |
+            cd /var/www/html/mycircle/backend
+            sudo -E npm ci
+            sudo -E pm2 stop backend || true
+            sudo -E pm2 delete backend || true
+            sudo -E pm2 start --name "backend" index.js
   deploy-fe:
     runs-on: ubuntu-latest
     needs: pull_code
@@ -41,4 +59,4 @@ jobs:
             sudo -E npm ci
             sudo -E pm2 stop frontend || true
             sudo -E pm2 delete frontend || true
-            sudo -E  pm2 start --name "frontend" deploy.js
+            sudo -E pm2 start --name "frontend" deploy.js

@@ -12,6 +12,7 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(BASE_URL);
         console.log(`Email: ${email}, Password: ${password}`);
         fetch(BASE_URL + '/api/auth/login', {
             method: 'POST',
