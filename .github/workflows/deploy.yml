@@ -2,7 +2,7 @@ name: MyCircle Deploy
 
 on:
   push:
-    branches: [ "deploy" ]
+    branches: [ "master" ]
   workflow_dispatch:
 
 jobs:
@@ -35,10 +35,10 @@ jobs:
           script_stop: true
           script: |
             cd /var/www/html/mycircle/frontend
-            npm ci
-            npm run build
+            sudo -E npm ci
+            sudo -E npm run build
             cd server
-            npm ci
-            pm2 stop fe || true
-            pm2 delete fe || true
-            pm2 start --name "fe" deploy.js
+            sudo -E npm ci
+            sudo -E pm2 stop frontend || true
+            sudo -E pm2 delete frontend || true
+            sudo -E  pm2 start --name "frontend" deploy.js
