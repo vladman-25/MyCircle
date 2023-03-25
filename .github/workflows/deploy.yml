@@ -35,7 +35,7 @@ jobs:
           script: |
             cd /var/www/html/mycircle/frontend
             sudo -E npm ci
-            npm run build
+            sudo -E npm run build
             cd server
             sudo -E npm ci
             sudo -E pm2 stop fe || true
