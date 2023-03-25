@@ -19,6 +19,7 @@ jobs:
           script_stop: true
           script: |
             cd /var/www/html/mycircle
+            sudo su
             git pull origin master
   deploy-fe:
     runs-on: ubuntu-latest
