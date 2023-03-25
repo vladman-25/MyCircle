@@ -38,6 +38,6 @@ jobs:
             npm run build
             cd server
             sudo -E npm ci
-            pm2 stop fe || true
-            pm2 delete fe || true
-            pm2 start --name "fe" deploy.js
+            sudo -E pm2 stop fe || true
+            sudo -E pm2 delete fe || true
+            sudo -E  pm2 start --name "fe" deploy.js
