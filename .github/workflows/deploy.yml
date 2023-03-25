@@ -18,7 +18,7 @@ jobs:
           # || true needed because pm2 delete returns 1 when no process is running
           script_stop: true
           script: |
-            cd /var/www/html/mycircle
+            cd /var/www/mycircle
             sudo -E git pull origin master
   deploy-fe:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           script_stop: true
           script: |
-            cd /var/www/html/mycircle/frontend
+            cd /var/www/mycircle/frontend
             sudo -E npm ci
             sudo -E npm run build
             cd server
