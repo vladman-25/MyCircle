@@ -19,7 +19,6 @@ jobs:
           script_stop: true
           script: |
             cd /var/www/html/mycircle
-            eval ssh-agent -s
             sudo -E git pull origin master
   deploy-fe:
     runs-on: ubuntu-latest
