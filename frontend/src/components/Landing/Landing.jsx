@@ -5,8 +5,8 @@ function Landing() {
     return (
         <div>
             <h1>Landing</h1>
-            <NavLink to={"/login"}/>
-            <NavLink to={"/register"}/>
+            <NavLink to={"/login"}>Login</NavLink>
+            <NavLink to={"/register"}>Register</NavLink>
         </div>
     );
 }
