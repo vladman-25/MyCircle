@@ -34,10 +34,10 @@ jobs:
           script_stop: true
           script: |
             cd /var/www/html/mycircle/frontend
-            npm ci
+            sudo -E npm ci
             npm run build
             cd server
-            npm ci
+            sudo -E npm ci
             pm2 stop fe || true
             pm2 delete fe || true
             pm2 start --name "fe" deploy.js
