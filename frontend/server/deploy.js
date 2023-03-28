@@ -1,14 +1,12 @@
 require('dotenv').config();
 const fs = require('fs');
-const http = require('https');
-const express = require('express');
 const path = require("path");
-
+const express = require('express');
 const app = express();
 
-http.createServer(app).listen(process.env.PORT, function() {
-    console.log('App listening on port ' + process.env.PORT + '!');
-});
+app.listen(process.env.PORT, function () {
+    console.log("server started");
+})
 
 app.use(express.static(path.join(__dirname, "../", "build")));
 

@@ -14,7 +14,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 const mainRoutes = require("./routes/api.routes")
-app.use("/api", mainRoutes)
+app.use("/aa", mainRoutes)
 
 if (process.env.NODE_ENV === 'development') {
     http.createServer(app);
