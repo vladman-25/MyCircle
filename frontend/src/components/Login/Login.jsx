@@ -23,6 +23,7 @@ function Login() {
         })
             .then(response => response.json())
             .then(data => {localStorage.setItem("token",data.token)
+                console.log(data)
                 navigate("/feed")}
             )
             .catch(error => console.error(error));

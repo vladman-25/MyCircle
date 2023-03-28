@@ -24,7 +24,9 @@ function Register() {
             body: JSON.stringify({ username: username, password: password, email: email, phone: phone })
         })
             .then(response => console.log(response))
-            .then(data => {navigate("/login")}
+            .then(data => {
+                console.log(data)
+                navigate("/login")}
             )
             .catch(error => console.error(error));
     };
