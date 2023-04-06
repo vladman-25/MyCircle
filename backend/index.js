@@ -23,8 +23,8 @@ if (process.env.NODE_ENV === 'development') {
     http.createServer(app);
 } else if (process.env.NODE_ENV === 'production') {
     https.createServer({
-        key: fs.readFileSync(process.env.SSL_KEY),
-        cert: fs.readFileSync(process.env.SSL_CERT)
+        key: fs.readFileSync(process.env.SSL_PRIVATE_KEY_PATH),
+        cert: fs.readFileSync(process.env.SSL_CERT_PATH)
     }, app)
 }
 
