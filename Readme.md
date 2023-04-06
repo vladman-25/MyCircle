@@ -13,18 +13,32 @@ our **frontend (/)** to port **3001** (my choosing) and the **backend (/api)** t
 
 ```
 server {
-        listen       80;
-        listen       [::]:80;
-        server_name  mycircle.live, www.mycircle.live;
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name mycircle.live, www.mycircle.live;
 
-        location / {
-                proxy_pass http://localhost:3001;
-        }
+    listen 443 ssl; # managed by Certbot
 
-        location /api {
-                proxy_pass http://localhost:5000;
-        }
+    # RSA certificate
+    ssl_certificate /etc/letsencrypt/live/mycircle.live/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/mycircle.live/privkey.pem; # managed by Certbot
+
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+
+    # Redirect non-https traffic to https
+    if ($scheme != "https") {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    location / {
+        proxy_pass https://localhost:3001;
     }
+
+    location /api {
+        proxy_pass https://localhost:5000;
+    }
+
+}
 ``` 
 
 Finalise config as below. <br />
@@ -87,6 +101,13 @@ IdentityFile /root/.ssh/id_ed25519
 `sudo systemctl start mongod` <br />
 `sudo systemctl status mongod` <br />
 
-## STEP 7. Done!
+## STEP 7. SSL Certbot
+
+`sudo apt install certbot python3-certbot-nginx`
+`sudo certbot --nginx -d example.com -d www.example.com`
+`sudo systemctl status certbot.timer`
+`sudo certbot renew --dry-run`
+
+## STEP 8. Done!
 
 Now using the current project structure and deploy script, your app should be running on your next deploy.
