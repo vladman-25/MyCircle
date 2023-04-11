@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import {useNavigate} from "react-router-dom";
 import "./Login.scss"
 
+import Auth from "../../modules/Auth"
+
 function Login() {
-    const BASE_URL = process.env.BACKEND_URL;
+    const BASE_URL = "http://localhost:5000";
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     let navigate = useNavigate()
 
+    useEffect(
+        () => {if (Auth.isUserAuthenticated() == true) {
+                        navigate("/feed")
+                        }
+        }
+    )
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(BASE_URL);
         console.log(`Email: ${email}, Password: ${password}`);
-        fetch('/api/auth/login', {
+        fetch(BASE_URL + '/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,9 +30,9 @@ function Login() {
             body: JSON.stringify({ email: email, password: password })
         })
             .then(response => response.json())
-            .then(data => {localStorage.setItem("token",data.token)
-                console.log(data)
-                navigate("/feed")}
+            .then(data => {
+                Auth.authenticateUser(data.token)
+                data.token? navigate("/feed"): console.log(data.error)}
             )
             .catch(error => console.error(error));
     };

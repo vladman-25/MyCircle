@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import {useNavigate} from "react-router-dom";
 
 import "./Register.scss"
+import Auth from "../../modules/Auth";
 
 function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
-    const BASE_URL = process.env.BACKEND_URL
+    const BASE_URL = "http://localhost:5000"
 
     let navigate = useNavigate()
+
+    useEffect(
+        () => {if (Auth.isUserAuthenticated() == true) {
+            navigate("/feed")
+        }
+        }
+    )
 
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(`Username: ${username}, Password: ${password}, Email: ${email}, Phone: ${phone}`);
-        fetch('/api/auth/register', {
+        fetch(BASE_URL + '/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

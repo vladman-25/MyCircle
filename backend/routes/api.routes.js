@@ -5,7 +5,7 @@ const authRouter = require('./auth.routes');
 router.get('/', (req, res) => {
     const data = {
         success: true,
-        message: "merge tati",
+        message: "Connection working!",
         date: new Date().toLocaleString()
     }
     res.status(200).send(data);
