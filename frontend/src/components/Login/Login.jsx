@@ -22,7 +22,7 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(`Email: ${email}, Password: ${password}`);
-        fetch(BASE_URL + '/api/auth/login', {
+        fetch('/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -38,25 +38,25 @@ function Login() {
     };
 
     return (
-        <div>
+        <div className='formular-login'>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <div >
-                    <label >
+                    <h2 >
                         Email:
-                    </label>
+                    </h2>
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-
+                    <h3>Email cannot be empty!</h3>
                 </div>
                 <div >
-                    <label >
-                        Password:</label>
+                    <h2 >
+                        Password:</h2>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-
+                    <h3>Password cannot be empty!</h3>
                 </div>
                 <button type="submit">Submit</button>
 
-                <Link to="/register">Don't have an account? Register now</Link>
+                {/*<Link to="/register">Don't have an account? Register now</Link> */}
             </form>
         </div>
     );

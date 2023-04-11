@@ -24,7 +24,7 @@ function Register() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(`Username: ${username}, Password: ${password}, Email: ${email}, Phone: ${phone}`);
-        fetch(BASE_URL + '/api/auth/register', {
+        fetch('/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,36 +39,38 @@ function Register() {
             .catch(error => console.error(error));
     };
     return (
-        <div>
+        <div className='formular-register'>
             <h1>Register</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label >
+                    <h2 >
                         Username:
-                    </label>
+                    </h2>
                     <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                    <h3>First name cannot be empty!</h3>
                 </div>
                 <div >
-                    <label >
-                        Password:</label>
+                    <h2 >
+                        Password:</h2>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-
+                    <h3>Last name cannot be empty!</h3>
                 </div>
                 <div >
-                    <label >
-                        Email:</label>
+                    <h2 >
+                        Email:</h2>
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-
+                    <h3>Email cannot be empty!</h3>
                 </div>
                 <div >
-                    <label >
-                        Phone:</label>
+                    <h2 >
+                        Phone:</h2>
                     <input type="phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-
+                    <h3>Password cannot be empty!</h3>
                 </div>
-                <button type="submit">Submit</button>
-
-                <Link to="/login">Already have an account? Login now</Link>
+                <div className='Buton'>
+                    <button type="submit">Submit</button>
+                </div>
+                {/*<Link to="/login">Already have an account? Login now</Link> */}
             </form>
         </div>
     );
