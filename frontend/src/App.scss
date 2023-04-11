@@ -1,7 +1,12 @@
 .App {
   text-align: center;
 }
+body {
+  margin: 0;
+  background: url("./public/bg.png") no-repeat;
+  background-size: 100vw 100vh;
 
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

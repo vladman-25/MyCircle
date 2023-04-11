@@ -1,0 +1,143 @@
+.navbar {
+  background: #7251B5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 15px 15px;
+  .nav-high {
+    height: 12vh;
+    display: flex;
+
+    .navbar-logo {
+      padding-top: 0.5vh;
+      padding-left: 1vw;
+
+      img {
+        height: 10vh;
+        width: auto;
+      }
+    }
+
+    .navbar-buttons {
+      margin: auto 0 auto auto;
+      display: flex;
+      .navbar-button-wrapper {
+        a {
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 56px;
+          /* identical to box height */
+          padding: 10px;
+          text-decoration: none;
+
+          color: #F2EBFB;
+        }
+
+        a:hover {
+          background-color: #F2EBFB;
+          color: #7251B5;
+          border-radius: 30px;
+        }
+
+        button {
+          background: none;
+          color: inherit;
+          border: none;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
+          outline: inherit;
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 56px;
+          /* identical to box height */
+          padding: 10px;
+          text-decoration: none;
+
+          color: #F2EBFB;
+        }
+        button:hover {
+          background-color: #F2EBFB;
+          color: #7251B5;
+          border-radius: 30px;
+        }
+      }
+    }
+
+    .navbar-extend {
+      display: none;
+      margin: auto 0 auto auto;
+
+      img {
+        height: 5vh;
+        width: auto;
+
+        //padding-top: 3vh;
+        padding-right: 3vw;
+      }
+    }
+  }
+  .nav-low {
+    display: none;
+  }
+  .nav-hidden {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .navbar {
+    .nav-high {
+      .sel {
+        display: none;
+      }
+
+      .navbar-extend {
+        display: block;
+      }
+    }
+    .nav-low {
+      display: block;
+      text-align: center;
+      .button-wrap {
+
+        a {
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 56px;
+          /* identical to box height */
+          padding: 5px;
+          text-decoration: none;
+          color: #F2EBFB;
+        }
+
+        button {
+          background: none;
+          color: inherit;
+          border: none;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
+          outline: inherit;
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 56px;
+          /* identical to box height */
+          padding: 10px;
+          text-decoration: none;
+
+          color: #F2EBFB;
+        }
+      }
+    }
+    .nav-hidden {
+      display: none;
+    }
+  }
+}
