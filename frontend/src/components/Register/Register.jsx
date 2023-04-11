@@ -24,7 +24,7 @@ function Register() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(`Username: ${username}, Password: ${password}, Email: ${email}, Phone: ${phone}`);
-        fetch(BASE_URL + '/api/auth/register', {
+        fetch('/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
