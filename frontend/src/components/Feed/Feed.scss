@@ -1,0 +1,39 @@
+.feed-container {
+  display: flex;
+  .timeline {
+    width: 50%;
+  }
+  .chats {
+    width: 50%;
+    .chats-container {
+      margin: auto;
+      width: 80%;
+      background-color: #FFFFFF;
+      border-radius: 30px;
+      padding-bottom: 20px;
+      h1 {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 56px;
+        text-align: center;
+
+        color: #2D1044;
+      }
+
+    }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .feed-container {
+    display: block;
+    .timeline {
+      width: 100%;
+    }
+    .chats {
+      width: 100%;
+    }
+  }
+}
