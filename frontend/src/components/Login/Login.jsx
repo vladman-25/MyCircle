@@ -25,7 +25,7 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(`Email: ${email}, Password: ${password}`);
-        fetch('/api/auth/login', {
+        fetch(BASE_URL + '/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,8 @@ function Login() {
             .then(response => response.json())
             .then((data) => {
                 if ((data.token !== null) && (typeof(data.token) !== "undefined")) {
-                    Auth.authenticateUser(data.token)
+                    Auth.authenticateUser(data.token, JSON.stringify(data.user))
+                    console.log(data)
                     if (Auth.isUserAuthenticated()) navigate("/feed")
                 } else {
                     data.error.includes("email") ? setEmailErr(data.error) : setEmailErr('')
