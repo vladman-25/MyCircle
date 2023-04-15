@@ -4,7 +4,7 @@ export default class Auth {
     }
 
     static isUserAuthenticated() {
-        return localStorage.getItem("token") !== null;
+        return ((localStorage.getItem("token") !== null) && (typeof(localStorage.getItem("token")) !== undefined));
     }
 
     static deauthenticateUser() {

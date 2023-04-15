@@ -10,10 +10,13 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [emailErr, setEmailErr] = useState('');
+    const [passwordErr, setPasswordErr] = useState('');
+
     let navigate = useNavigate()
 
     useEffect(
-        () => {if (Auth.isUserAuthenticated() == true) {
+        () => {if (Auth.isUserAuthenticated() === true) {
                         navigate("/feed")
                         }
         }
@@ -22,7 +25,7 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(`Email: ${email}, Password: ${password}`);
-        fetch('/api/auth/login', {
+        fetch(BASE_URL + '/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,10 +33,17 @@ function Login() {
             body: JSON.stringify({ email: email, password: password })
         })
             .then(response => response.json())
-            .then(data => {
-                Auth.authenticateUser(data.token)
-                data.token? navigate("/feed"): console.log(data.error)}
-            )
+            .then((data) => {
+                if ((data.token !== null) && (typeof(data.token) !== "undefined")) {
+                    Auth.authenticateUser(data.token)
+                    if (Auth.isUserAuthenticated()) navigate("/feed")
+                } else {
+                    data.error.includes("email") ? setEmailErr(data.error) : setEmailErr('')
+                    data.error.includes("Password") ? setPasswordErr(data.error) : setPasswordErr('')
+                    data.error.includes("error") ? setEmailErr('Wrong email or password!') : setEmailErr('')
+                    // console.log(data.error)
+                }
+                })
             .catch(error => console.error(error));
     };
 
@@ -46,13 +56,13 @@ function Login() {
                         Email:
                     </h2>
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                    <h3>Email cannot be empty!</h3>
+                    <h3>{emailErr}</h3>
                 </div>
                 <div >
                     <h2 >
                         Password:</h2>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                    <h3>Password cannot be empty!</h3>
+                    <h3>{passwordErr}</h3>
                 </div>
                 <button type="submit">Submit</button>
 

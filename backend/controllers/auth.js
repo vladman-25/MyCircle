@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
     if (error)
         return res.status(400).send({"error" : error.details[0].message});
     try {
-        let { email, phone, username, password } = req.body;
+        let { firstname, lastname, username, email, password } = req.body;
         password = bcrypt.hashSync(password, salt)
 
         let user = await User.findOne({username: username});
@@ -26,7 +26,7 @@ const registerUser = async (req, res) => {
         if (user) {
             return res.status(400).send({"error":"There is already an user with that email!"});
         }
-        user = new User({email, phone, username, password})
+        user = new User({firstname, lastname, username, email, password})
         try {
             await user.save();
             return res.status(200).send({"msg":"User created!"})
