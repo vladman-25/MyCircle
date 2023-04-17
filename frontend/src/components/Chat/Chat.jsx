@@ -5,7 +5,9 @@ import {useNavigate, useParams} from "react-router-dom";
 import Auth from "../../modules/Auth";
 import ScrollToBottom from "react-scroll-to-bottom";
 
-const socket = io.connect("http://localhost:5000");
+const BACKEND_URL = "https://mycircle.live:5000"
+
+const socket = io.connect(BACKEND_URL);
 
 function Chat() {
 
@@ -26,7 +28,7 @@ function Chat() {
 
     const [title, setTitle] = useState("");
     async function getHistory() {
-            fetch(BASE_URL + '/api/chat/history', {
+            fetch('/api/chat/history', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
