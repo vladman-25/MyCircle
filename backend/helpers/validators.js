@@ -72,11 +72,42 @@ const patchUser = joi.object({
     })
 });
 
+const createRoom = joi.object( {
+    url:        joi.string().trim().required().messages({
+        'string.empty': `URL cannot be empty!`,
+        'any.required': `URL is a required field!`
+    }),
+    topic:        joi.string().trim().required().messages({
+        'string.empty': `Topic cannot be empty!`,
+        'any.required': `Topic is a required field!`
+    }),
+});
+
+// const createMessage = joi.object(   {
+//
+//     author: joi.string().trim().required().messages({
+//         'string.empty': `author cannot be empty!`,
+//         'any.required': `author is a required field!`
+//     }),
+//
+//     content: joi.string().trim().required().messages({
+//         'string.empty': `content cannot be empty!`,
+//         'any.required': `content is a required field!`
+//     }),
+//
+//     time: joi.string().trim().required().messages({
+//         'string.empty': `time cannot be empty!`,
+//         'any.required': `time is a required field!`
+//     }),
+// });
+
 const validators = {
     register,
     login,
     createUser,
-    patchUser
+    patchUser,
+    createRoom,
+    // createMessage
 };
 
 module.exports = validators

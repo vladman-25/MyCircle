@@ -2,17 +2,16 @@ import "./Feed.scss"
 import Unauthorized from "../Unauthorized/Unauthorized";
 import Auth from "../../modules/Auth"
 import Minichat from "./Minichat/Minichat";
-
 import {useNavigate} from "react-router-dom";
-
-
 
 function Feed() {
 
     let navigate = useNavigate()
+    if (!Auth.isUserAuthenticated()) {
+        navigate('/unauthorized')
+    }
 
     return (
-        Auth.isUserAuthenticated()?
             <div className="feed-container">
                 <div className="chats">
                     <div className="chats-container">
@@ -30,8 +29,6 @@ function Feed() {
                     <h1>bbb</h1>
                 </div>
             </div>
-            :
-            <Unauthorized />
     );
 }
 export default Feed;
