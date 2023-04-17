@@ -42,6 +42,8 @@ const io = new Server(server, {
     },
 });
 
+const {createMessage} = require('./helpers/messagesSaver')
+
 io.on("connection", (socket) => {
     console.log(`User Connected: ${socket.id}`);
 
@@ -53,6 +55,7 @@ io.on("connection", (socket) => {
     socket.on("send_message", (data) => {
         console.log(data);
         socket.to(data.room).emit("receive_message", data);
+        createMessage(data.author_id, data.room, data.author, data.content, data.time)
     });
 
     socket.on("disconnect", () => {

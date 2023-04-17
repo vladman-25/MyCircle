@@ -1,25 +1,55 @@
 import './Chat.scss'
 import io from "socket.io-client";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import Auth from "../../modules/Auth";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 const socket = io.connect("http://localhost:5000");
 
 function Chat() {
+
+    let navigate = useNavigate()
+    let username = ""
+    if (!Auth.isUserAuthenticated()) {
+        navigate('/unauthorized')
+    } else {
+        username = JSON.parse(localStorage.getItem('user')).username
+    }
+
     const {chat} = useParams()
-    // console.log("chat " + chat);
-
-    const username = JSON.parse(localStorage.getItem('user')).username
     const room = chat
-
     let ignore = false
-    //////
-
+    const BASE_URL = "http://localhost:5000"
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
 
+    const [title, setTitle] = useState("");
+    async function getHistory() {
+            fetch(BASE_URL + '/api/chat/history', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({url: room})
+            })
+                .then(response => response.json())
+                .then((data) => {
+                    console.log(data.messages);
+                    setMessageList(data.messages)
+                    setTitle(data.topic)
+                })
+                .catch(error => console.error(error));
+    }
+
+
     useEffect(() => {
+
+        // getHistory()
+
         if (!ignore) {
+
+            getHistory()
             console.log("trying to join")
             if ( username !== "" && room !== "") {
                 socket.emit("join_room", room);
@@ -36,9 +66,10 @@ function Chat() {
     const sendMessage = async () => {
         if (currentMessage !== "") {
             const messageData = {
+                author_id: JSON.parse(localStorage.getItem('user'))._id,
                 room: room,
                 author: username,
-                message: currentMessage,
+                content: currentMessage,
                 time:
                     new Date(Date.now()).getHours() +
                     ":" +
@@ -51,40 +82,42 @@ function Chat() {
         }
     };
 
-
     return (
-        <div>
-            <h1>{chat}</h1>
-            <div className="chat-body">
-                {messageList.map((messageContent) => {
-                    return (
-                        <div
-                            className="message"
-                            id={username === messageContent.author ? "you" : "other"}
-                        >
-                            <div>
-                                <div className="message-content">
-                                    <p>{messageContent.message}</p>
-                                </div>
-                                <div className="message-meta">
-                                    <p id="time">{messageContent.time}</p>
-                                    <p id="author">{messageContent.author}</p>
-                                </div>
+        <div className="chat">
+            <div className="chat-header">
+                <h1>{title}</h1>
+            </div>
+            <ScrollToBottom className="chat-body">
+            {messageList.map((messageContent, key) => {
+                return (
+                    <div
+                        className={`message-${username === messageContent.author ? "you" : "other"}`}
+                        key={key}
+                    >
+                        <div className="message">
+                            <div className="message-content">
+                                <p>{messageContent.content}</p>
+                            </div>
+                            <div className="message-meta">
+                                <p id="time">{messageContent.time}</p>
+                                <p id="author">{messageContent.author}</p>
                             </div>
                         </div>
-                    );
-                })}
-            </div>
+                    </div>
+                );
+            })}
+            </ScrollToBottom>
+            {/*</div>*/}
             <div className="chat-footer">
                 <input
                     type="text"
                     value={currentMessage}
-                    placeholder="Hey..."
+                    placeholder="Type something..."
                     onChange={(event) => {
                         setCurrentMessage(event.target.value);
                     }}
                 />
-                <button onClick={sendMessage}>&#9658;</button>
+                <button onClick={sendMessage}>Send</button>
             </div>
         </div>
     )

@@ -20,6 +20,7 @@ function App() {
               <Route path="/register" exact element={<Register />} />
               <Route path="/feed" exact element={<Feed />} />
               <Route path="/chat/:chat" exact element={<Chat />} />
+              <Route path="/unauthorized" exact element={<Unauthorized />} />
           </Routes>
       </BrowserRouter>
   );
