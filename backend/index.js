@@ -5,7 +5,6 @@ const http = require('http');
 const https = require('https');
 const mongoose = require("mongoose");
 const fs = require('fs');
-const { Server } = require("socket.io");
 
 
 require('dotenv').config();
@@ -35,11 +34,16 @@ if (process.env.NODE_ENV === 'development') {
     }, app)
 }
 
-const io = new Server(server, {
+const io = new require("socket.io")(server, {
     cors: {
-        origin: "https://mycircle.live",
-        methods: ["GET", "POST"],
-    },
+        origins: ["https://mycircle.live","https://www.mycircle.live"],
+    	methods: ["GET", "POST"],
+    	allowedHeaders: ["authorization", "Access-Control-Allow-Origin"],
+     	credentials: true,
+  },
+  transports: ['websocket'],
+  upgrade: false,
+  serveClient: true
 });
 
 const {createMessage} = require('./helpers/messagesSaver')

@@ -5,9 +5,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import Auth from "../../modules/Auth";
 import ScrollToBottom from "react-scroll-to-bottom";
 
-const BACKEND_URL = "https://mycircle.live:5000"
-
-const socket = io.connect(BACKEND_URL);
+const BACKEND_URL = "https://mycircle.live/"
+const socket = io.connect(BACKEND_URL,{ transports: ["websocket"] });
 
 function Chat() {
 
