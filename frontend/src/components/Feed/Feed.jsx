@@ -30,7 +30,7 @@ function Feed() {
                     </div>
                 </div>
                 <div className="timeline">
-                    <h1>bbb</h1>
+                    <h1></h1>
                 </div>
             </div>
     );
