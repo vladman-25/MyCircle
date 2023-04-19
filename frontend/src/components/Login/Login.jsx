@@ -38,11 +38,12 @@ function Login() {
                     Auth.authenticateUser(data.token, JSON.stringify(data.user))
                     console.log(data)
                     if (Auth.isUserAuthenticated()) navigate("/feed")
-                } else {
+                }
+                if ((data.error !== null) && (typeof(data.error) !== "undefined")) {
                     data.error.includes("email") ? setEmailErr(data.error) : setEmailErr('')
                     data.error.includes("Password") ? setPasswordErr(data.error) : setPasswordErr('')
                     data.error.includes("error") ? setEmailErr('Wrong email or password!') : setEmailErr('')
-                    // console.log(data.error)
+                    console.log(data.error)
                 }
                 })
             .catch(error => console.error(error));

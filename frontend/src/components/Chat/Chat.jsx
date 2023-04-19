@@ -47,6 +47,9 @@ function Chat() {
     useEffect(() => {
 
         // getHistory()
+        if (!Auth.isUserAuthenticated()) {
+            navigate('/unauthorized')
+        }
 
         if (!ignore) {
 
