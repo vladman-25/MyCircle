@@ -1,0 +1,31 @@
+.unauthorized {
+  h1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 75px;
+    /* identical to box height */
+    text-align: center;
+    color: #2D1044;
+    margin: unset;
+  }
+  .img-div {
+    margin: auto;
+    width: 500px;
+    img {
+      width: 100%;
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .unauthorized {
+    h1 {
+      font-size: 30px;
+    }
+
+    .img-div {
+      width: 90%;
+    }
+  }
+}

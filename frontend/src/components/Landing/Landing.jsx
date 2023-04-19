@@ -5,6 +5,8 @@ import Auth from "../../modules/Auth";
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 
+import illu from '../../public/illu.jpeg'
+
 function Landing() {
 
     let navigate = useNavigate()
@@ -19,8 +21,7 @@ function Landing() {
         <div className="Landing-root">
             <div className="title-desk">
                 <h1>Welcome to MyCircle</h1>
-                <p> We aim to give chatting a new perspective by offering
-                    you an adventurous experience in talking with strangers. </p>
+                <img src={illu}/>
             </div>
             <div className="options-desk">
                 <div className="options-container">

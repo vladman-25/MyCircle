@@ -23,6 +23,11 @@
       text-align: justify;
       color: #2D1044;
     }
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+    }
   }
   .options-desk{
     width: 40%;
@@ -45,6 +50,11 @@
           line-height: 56px;
           text-decoration: none;
           color: #F2EBFB;
+        }
+      }
+      .options-button:hover {
+        a {
+          color: #2D1044;
         }
       }
       .options-title{

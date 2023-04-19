@@ -3,13 +3,17 @@ import Unauthorized from "../Unauthorized/Unauthorized";
 import Auth from "../../modules/Auth"
 import Minichat from "./Minichat/Minichat";
 import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
 function Feed() {
 
     let navigate = useNavigate()
-    if (!Auth.isUserAuthenticated()) {
-        navigate('/unauthorized')
-    }
+
+    useEffect(() => {
+        if (!Auth.isUserAuthenticated()) {
+            navigate('/unauthorized')
+        }
+    })
 
     return (
             <div className="feed-container">
