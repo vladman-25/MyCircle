@@ -38,7 +38,7 @@ function Register() {
                     Email: ${email}, 
                     Password: ${password}`);
 
-        fetch('/api/auth/register', {
+        fetch(BASE_URL + '/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

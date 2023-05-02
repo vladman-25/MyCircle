@@ -5,11 +5,17 @@ import {useNavigate, useParams} from "react-router-dom";
 import Auth from "../../modules/Auth";
 import ScrollToBottom from "react-scroll-to-bottom";
 
-const BACKEND_URL = "https://mycircle.live/"
-const socket = io.connect(BACKEND_URL,{ transports: ["websocket"] });
+//const BACKEND_URL = "https://mycircle.live/"
+const BACKEND_URL = "http://localhost:5000"
+const socket = io(
+    BACKEND_URL,
+    {
+        transports: ["websocket"],
+        autoConnect: false
+    });
 
 function Chat() {
-
+    socket.connect();
     let navigate = useNavigate()
     let username = ""
     if (!Auth.isUserAuthenticated()) {
@@ -27,7 +33,7 @@ function Chat() {
 
     const [title, setTitle] = useState("");
     async function getHistory() {
-            fetch('/api/chat/history', {
+            fetch(BASE_URL + '/api/chat/history', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
