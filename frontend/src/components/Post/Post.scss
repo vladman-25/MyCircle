@@ -1,0 +1,201 @@
+.post {
+  background-color: #FFFFFF;
+  border-radius: 30px;
+  width: 100%;
+  margin: 30px auto auto;
+
+  .post-header {
+    border-bottom: 1px solid #2D1044;
+    display: flex;
+    width: 90%;
+    margin: auto;
+    padding-top: 20px;
+    .post-header-img {
+      width: 75px;
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+    .post-header-details {
+
+      h2 {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        margin-left: 10px;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #6247AA;
+      }
+      h3 {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+        margin-left: 10px;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #2D1044;
+      }
+    }
+  }
+  .post-body {
+    width: 90%;
+    margin: auto;
+    h2 {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+      text-align: justify;
+
+      color: #2D1044;
+    }
+    .post-body-img {
+      img {
+        width: 100%;
+        max-height: 300px;
+        //height: auto;
+        //max-height: unset;
+        object-fit: cover;
+      }
+    }
+    .expanded {
+      img {
+        height: auto;
+        max-height: unset;
+      }
+    }
+    .post-body-actions {
+      display: flex;
+      height: 30px;
+      justify-content: space-between;
+      .like-comm {
+        display: flex;
+        .like {
+          display: flex;
+          margin-right: 10px;
+          h2 {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 35px;
+
+            color: #6247AA;
+            margin: 0;
+          }
+          img {
+            height: 100%;
+            width: auto;
+          }
+        }
+        .comm {
+          display: flex;
+          h2 {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 35px;
+
+            color: #6247AA;
+            margin: 0;
+          }
+          img {
+            height: 100%;
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+  .post-comments {
+    width: 90%;
+    margin: 15px auto auto;
+    border-top: 1px solid #2D1044;
+    padding-bottom: 30px;
+    .your-comment {
+      display: flex;
+      margin: auto;
+      padding-top: 20px;
+
+      .your-comment-image {
+        width: 50px;
+
+        img {
+          width: 50px;
+          height: auto;
+          border-radius: 50%;
+        }
+      }
+
+      .your-comment-body {
+        width: 100%;
+        h2 {
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 28px;
+          margin-left: 10px;
+          margin-top: 0;
+
+          color: #6247AA;
+
+          margin-bottom: 15px;
+        }
+        form {
+          .form-comment {
+            display: flex;
+            .form-input {
+              width: 90%;
+              textarea {
+                width: 95%;
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 23px;
+                margin-left: 10px;
+                margin-top: 0;
+                margin-bottom: 0;
+                color: rgba(45, 16, 68, 1);
+                text-decoration: none;
+                border: none;
+                resize: none;
+              }
+              textarea::placeholder {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 23px;
+                margin-left: 10px;
+                margin-top: 0;
+                margin-bottom: 0;
+                color: rgba(45, 16, 68, 0.5);
+              }
+              textarea:focus, input:focus{
+                outline: none;
+              }
+            }
+            .form-send {
+              width: 30px;
+              img {
+                width: 100%;
+                height: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
