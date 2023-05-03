@@ -26,8 +26,7 @@ function Register() {
     useEffect(
         () => {if (Auth.isUserAuthenticated() === true) {
             navigate("/feed")
-        }
-        }
+        }}
     )
 
     const handleSubmit = (event) => {

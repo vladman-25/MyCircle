@@ -24,6 +24,7 @@ const createPost = async(req, res) => {
                 }))
                 return res.status(400).send({"error": "Error! Could not post!"});
             }
+
             const newPost = new Post({
                 authorId: author,
                 caption: caption,

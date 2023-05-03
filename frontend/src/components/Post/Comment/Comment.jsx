@@ -16,7 +16,7 @@ function Comment(props) {
                 <img src={userpfp}/>
             </div>
             <div className="comment-body">
-                <h2>{firstname + "  " + lastname + " @" + username}</h2>
+                <a href={'/user/'+ props.user.authorId._id}>{firstname + "  " + lastname + " @" + username}</a>
                 <h3>{content}</h3>
             </div>
         </div>

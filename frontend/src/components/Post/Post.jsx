@@ -104,7 +104,7 @@ function Post(props) {
                     <img src={userpfp}/>
                 </div>
                 <div className="post-header-details">
-                    <h2>{firtstName + "  " + lastName + " @" + username}</h2>
+                    <a href={'/user/'+ props.post.authorId._id}>{firtstName + "  " + lastName + " @" + username}</a>
                     <h3>16:31</h3>
                 </div>
             </div>

@@ -18,6 +18,24 @@ const getPostsByURL = async(req, res) => {
     }
 }
 
+const getPostsByUser = async(req, res) => {
+    // console.log("test")
+    try {
+        let {authorId} = req.body;
+        const posts = await Post.find({authorId: authorId})
+            .populate('authorId')
+            .populate({ path : 'comments',
+                populate : {
+                    path : 'authorId'
+                }})
+        return res.status(200).send(posts)
+    } catch(error) {
+        console.log(error)
+        return res.status(500).send("Am murit")
+    }
+}
+
 module.exports = {
     getPostsByURL: getPostsByURL,
+    getPostsByUser: getPostsByUser,
 }
