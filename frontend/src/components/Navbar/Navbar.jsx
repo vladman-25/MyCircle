@@ -27,6 +27,9 @@ function Navbar() {
                     Auth.isUserAuthenticated() ?
                         <div className="navbar-buttons sel">
                             <div className="navbar-button-wrapper">
+                                <a href={'/user/' + JSON.parse(localStorage.getItem('user'))._id}>Profile</a>
+                            </div>
+                            <div className="navbar-button-wrapper">
                                 <a href="/feed">Feed</a>
                             </div>
                             <div className="navbar-button-wrapper">
@@ -54,6 +57,9 @@ function Navbar() {
                     <div className={`nav-low ${check ? "" : "nav-hidden"}`}>
                         <div className="button-wrap">
                             <a href="/feed">Feed</a>
+                        </div>
+                        <div className="button-wrap">
+                            <a href={'/user/' + JSON.parse(localStorage.getItem('user'))._id}>Profile</a>
                         </div>
                         <div className="button-wrap">
                             <button onClick={() => {Auth.deauthenticateUser()

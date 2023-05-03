@@ -8,6 +8,7 @@ import Post from "../Post/Post";
 import submit from "../../public/submit-comm.png";
 import userpfp from "../../public/userpfp.jpg";
 import Axios from "axios"
+import Searchbar from "../Searchbar/Searchbar";
 
 function Feed() {
 
@@ -18,7 +19,7 @@ function Feed() {
     const [posts, setPosts] = useState([]);
 
     async function getPosts() {
-        fetch(BASE_URL + '/api/custompost', {
+        fetch(BASE_URL + '/api/custompost/page', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,6 +60,7 @@ function Feed() {
     function handleSubmit(event) {
         if (caption === "") {
             event.preventDefault()
+            return;
         }
         console.log(caption)
         console.log(picture)
@@ -85,7 +87,8 @@ function Feed() {
 
     return (
              <div>
-                <div className="feed-container">
+                 <Searchbar/>
+                 <div className="feed-container">
                     <div className="post-form">
                         <div className="form-container">
                             <h1>Create a post!</h1>
@@ -120,6 +123,12 @@ function Feed() {
                                 <button type='submit'>Post</button>
                             </form>
 
+                        </div>
+                        <div className="form-container">
+                            <h1>Create a page!</h1>
+                            <div className="page">
+                                <a href="/page">Take me there</a>
+                            </div>
                         </div>
                     </div>
                     <div className="chats">

@@ -1,41 +1,77 @@
-.feed-container {
-  display: flex;
+
+.profile {
+  align-items: center;
+  padding: 40px 20px;
+  flex-direction: column;
+  margin: auto;
+  width: 80%;
+  height: 90%;
+  margin-top: 5%;
+  background: #C19EE0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 62px;
+
+  .profile_picture{
+    align-items: center;
+    margin-bottom: 20px;
+    img {
+      width: 100px;
+      height: 100px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 20%;
+    }
+  }
+
+  .profile_name{
+    align-items: center;
+    margin-bottom: 20px;
+    h1 {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 42px;
+      text-align: center;
+      color: #FFFFFF;
+    }
+  }
+
+  .profile_info{
+    align-items: flex-end;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    h2 {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 26px;
+      color: #FFFFFF;
+    }
+    p {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 22px;
+      line-height: 26px;
+
+      color: #FFFFFF;
+    }
+
+  }
+
   .post-form {
-    width: 50%;
+    width: 100%;
+    margin-top: 5%;
     .form-container {
       margin: auto;
       width: 80%;
       background-color: #FFFFFF;
       border-radius: 30px;
       padding-bottom: 20px;
-      h1 {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 32px;
-        line-height: 56px;
-        text-align: center;
 
-        color: #2D1044;
-      }
-      .page {
-        display: flex;
-        justify-content: center;
-        a {
-          background: #B185DB;
-          border: 1px solid #000000;
-          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          border-radius: 20px;
-          font-family: 'Roboto';
-          font-style: normal;
-          font-weight: 500;
-          font-size: 24px;
-          line-height: 28px;
-          color: #FFFFFF;
-          padding: 10px;
-          text-decoration: none;
-        }
-      }
       .your-comment {
         display: flex;
         margin: auto;
@@ -151,47 +187,5 @@
         }
       }
     }
-  }
-  .chats {
-    width: 50%;
-    .chats-container {
-      margin: auto;
-      width: 80%;
-      background-color: #FFFFFF;
-      border-radius: 30px;
-      padding-bottom: 20px;
-      h1 {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 32px;
-        line-height: 56px;
-        text-align: center;
-
-        color: #2D1044;
-      }
-
-    }
-  }
-}
-
-.posts {
-  width: 60vw;
-  margin: auto;
-}
-
-@media only screen and (max-width: 850px) {
-  .feed-container {
-    display: block;
-    .post-form {
-      width: 100%;
-    }
-    .chats {
-      width: 100%;
-    }
-  }
-  .posts {
-    width: 80vw;
-    margin: auto
   }
 }
