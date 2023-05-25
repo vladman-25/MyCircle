@@ -5,33 +5,33 @@
     .form-container {
       margin: auto;
       width: 80%;
-      background-color: #FFFFFF;
+      background-color: #ffffff;
       border-radius: 30px;
       padding-bottom: 20px;
       h1 {
-        font-family: 'Roboto';
+        font-family: "Roboto";
         font-style: normal;
         font-weight: 600;
         font-size: 32px;
         line-height: 56px;
         text-align: center;
 
-        color: #2D1044;
+        color: #2d1044;
       }
       .page {
         display: flex;
         justify-content: center;
         a {
-          background: #B185DB;
+          background: #b185db;
           border: 1px solid #000000;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           border-radius: 20px;
-          font-family: 'Roboto';
+          font-family: "Roboto";
           font-style: normal;
           font-weight: 500;
           font-size: 24px;
           line-height: 28px;
-          color: #FFFFFF;
+          color: #ffffff;
           padding: 10px;
           text-decoration: none;
         }
@@ -41,7 +41,7 @@
         margin: auto;
         padding-top: 20px;
         width: 90%;
-        border-bottom: 1px solid #2D1044;
+        border-bottom: 1px solid #2d1044;
         .your-comment-image {
           width: 50px;
 
@@ -54,7 +54,7 @@
 
         .your-comment-body {
           h2 {
-            font-family: 'Roboto';
+            font-family: "Roboto";
             font-style: normal;
             font-weight: 500;
             font-size: 24px;
@@ -62,7 +62,7 @@
             margin-left: 10px;
             margin-top: 0;
 
-            color: #6247AA;
+            color: #6247aa;
 
             margin-bottom: 15px;
           }
@@ -74,7 +74,7 @@
         .form-comment {
           textarea {
             width: 90%;
-            font-family: 'Roboto';
+            font-family: "Roboto";
             font-style: normal;
             font-weight: 500;
             font-size: 20px;
@@ -88,7 +88,7 @@
             resize: none;
           }
           textarea::placeholder {
-            font-family: 'Roboto';
+            font-family: "Roboto";
             font-style: normal;
             font-weight: 500;
             font-size: 20px;
@@ -98,7 +98,8 @@
             margin-bottom: 0;
             color: rgba(45, 16, 68, 0.5);
           }
-          textarea:focus, input:focus{
+          textarea:focus,
+          input:focus {
             outline: none;
           }
 
@@ -106,7 +107,7 @@
             display: none;
           }
           .custom-file-upload {
-            font-family: 'Roboto';
+            font-family: "Roboto";
             font-style: normal;
             font-weight: 500;
             font-size: 20px;
@@ -117,7 +118,7 @@
             color: rgba(45, 16, 68, 0.5);
           }
           h2 {
-            font-family: 'Roboto';
+            font-family: "Roboto";
             font-style: normal;
             font-weight: 500;
             font-size: 20px;
@@ -134,20 +135,20 @@
           }
         }
         button {
-          background: #B185DB;
+          background: #b185db;
           border: 1px solid #000000;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           border-radius: 20px;
-          font-family: 'Roboto';
+          font-family: "Roboto";
           font-style: normal;
           font-weight: 500;
           font-size: 24px;
           line-height: 28px;
 
-          color: #FFFFFF;
+          color: #ffffff;
           padding: 10px;
           margin-left: 35%;
-          width:30%;
+          width: 30%;
         }
       }
     }
@@ -157,20 +158,19 @@
     .chats-container {
       margin: auto;
       width: 80%;
-      background-color: #FFFFFF;
+      background-color: #ffffff;
       border-radius: 30px;
       padding-bottom: 20px;
       h1 {
-        font-family: 'Roboto';
+        font-family: "Roboto";
         font-style: normal;
         font-weight: 600;
         font-size: 32px;
         line-height: 56px;
         text-align: center;
 
-        color: #2D1044;
+        color: #2d1044;
       }
-
     }
   }
 }
@@ -192,6 +192,6 @@
   }
   .posts {
     width: 80vw;
-    margin: auto
+    margin: auto;
   }
 }

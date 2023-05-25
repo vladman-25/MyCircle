@@ -16,6 +16,8 @@ function Feed() {
   let navigate = useNavigate();
   let myUser = JSON.parse(localStorage.getItem("user"));
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const [posts, setPosts] = useState([]);
 
   async function getPosts() {
@@ -35,11 +37,33 @@ function Feed() {
       .catch((error) => console.error(error));
   }
 
+  async function getMyUser() {
+    fetch(config.BACKEND_URL + "/api/admin/" + myUser._id, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        myUser = data;
+        if (myUser.role === "Admin") {
+          setIsAdmin(true);
+        }
+        localStorage.setItem("user", JSON.stringify(data));
+      })
+      .catch((error) => console.error(error));
+  }
+
   useEffect(() => {
     if (!Auth.isUserAuthenticated()) {
       navigate("/unauthorized");
     }
+
     getPosts();
+    getMyUser();
   }, []);
 
   const [picture, setPicture] = useState("");
@@ -86,9 +110,9 @@ function Feed() {
         console.log(data);
       });
   }
-
   return (
     <div>
+      {myUser.role === "Admin" ? <h1>Hello Admin</h1> : <div></div>}
       <Searchbar />
       <div className="feed-container">
         <div className="post-form">
@@ -169,7 +193,7 @@ function Feed() {
       </div>
       <div className="posts">
         {posts.map((post, key) => (
-          <Post post={post} me={myUser} key={key} />
+          <Post post={post} me={myUser} key={key} admin={isAdmin} />
         ))}
       </div>
     </div>

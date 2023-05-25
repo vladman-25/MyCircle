@@ -50,8 +50,10 @@ const getUsers = async(req, res) => {
 
 const getUserById = async(req, res) => {
     try {
-        const user = await User.findById(req.params.userID);
+        const user = await User.findById(req.params.userID)
+
         if (!user) return res.status(400).send("This user id does not exist");
+        await user.save()
         return res.status(200).send(user)
 
     } catch(error)  {

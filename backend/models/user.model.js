@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const userSchema = new mongoose.Schema({
     firstname: {
@@ -20,10 +21,33 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-
     ,
     password: {
         type: String,
+        required: true,
+    }
+    ,
+    friendsList: {
+        type: [ObjectId],
+        ref: "User",
+        required: false,
+    }
+    ,
+    friendsRequest: {
+        type: [ObjectId],
+        ref: "User",
+        required: false,
+    }
+    ,
+    friendsSent: {
+        type: [ObjectId],
+        ref: "User",
+        required: false,
+    }
+    ,
+    role: {
+        type: String,
+        default: "Basic",
         required: true,
     }
 }, {

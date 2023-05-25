@@ -84,7 +84,17 @@ const editPost = async(req, res) => {
 }
 
 const deletePost = async(req, res) => {
-
+    try {
+        const post = await Post.findById(req.params.postID);
+        if(!post) {
+            return res.status(400).send("The given user does not exist!");
+        }
+        await post.remove()
+        return res.status(200).send("post deleted!")
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send("Am murit");
+    }
 }
 
 module.exports = {

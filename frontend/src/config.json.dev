@@ -1,0 +1,4 @@
+{
+  "BACKEND_URL" : "http://localhost:5000",
+  "BACKEND_URL_CHAT" : "http://localhost:5000"
+}

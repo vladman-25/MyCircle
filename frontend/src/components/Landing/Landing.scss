@@ -1,27 +1,27 @@
-.Landing-root{
+.Landing-root {
   display: flex;
-  .title-desk{
+  .title-desk {
     width: 40%;
     margin: auto;
-    h1{
-      font-family: 'Roboto';
+    h1 {
+      font-family: "Roboto";
       font-style: normal;
       font-weight: 600;
       font-size: 50px;
       line-height: 75px;
       /* identical to box height */
       text-align: center;
-      color: #2D1044;
+      color: #2d1044;
     }
 
-    p{
-      font-family: 'Roboto';
+    p {
+      font-family: "Roboto";
       font-style: normal;
       font-weight: 600;
       font-size: 29px;
       line-height: 47px;
       text-align: justify;
-      color: #2D1044;
+      color: #2d1044;
     }
     img {
       width: 100%;
@@ -29,93 +29,90 @@
       border-radius: 20px;
     }
   }
-  .options-desk{
+  .options-desk {
     width: 40%;
     height: 80vh;
-    .options-container{
+    .options-container {
       margin-top: 20vh;
-      .options-button{
-        background: #A06CD5;
+      .options-button {
+        background: #a06cd5;
         border-radius: 15px;
         width: 45%;
         text-align: center;
         padding: 10px;
         margin: auto;
         margin-top: -25px;
-        a{
-          font-family: 'Roboto';
+        a {
+          font-family: "Roboto";
           font-style: normal;
           font-weight: 600;
           font-size: 30px;
           line-height: 56px;
           text-decoration: none;
-          color: #F2EBFB;
+          color: #f2ebfb;
         }
       }
       .options-button:hover {
         a {
-          color: #2D1044;
+          color: #2d1044;
         }
       }
-      .options-title{
+      .options-title {
         margin-top: 65px;
-        h1{
-          font-family: 'Roboto';
+        h1 {
+          font-family: "Roboto";
           font-style: normal;
           font-weight: 600;
           font-size: 30px;
           line-height: 56px;
           text-align: center;
-          color: #2D1044;
+          color: #2d1044;
         }
-
       }
     }
   }
 }
 
 @media only screen and (max-width: 900px) {
-  .Landing-root{
+  .Landing-root {
     display: block;
-    .title-desk{
+    .title-desk {
       width: 80%;
       margin-top: 10vh;
 
-      h1{
+      h1 {
         font-size: 40px;
       }
 
-      p{
+      p {
         font-size: 23px;
       }
-
-
     }
 
-    .options-desk{
+    .options-desk {
       margin: auto;
       width: 80%;
       height: auto;
-      .options-container{
+      .options-container {
         margin-top: 15vh;
         margin-bottom: 15vh;
 
-        .options-button{
+        .options-button {
           margin-top: 2vh;
-          a{
+          a {
             font-size: 25px;
           }
         }
 
-        .options-title{
-          h1{
-            font-family: 'Roboto';
+        .options-title {
+          h1 {
+            font-family: "Roboto";
             font-style: normal;
             font-weight: 600;
             font-size: 25px;
             line-height: 47px;
             text-align: center;
-            color: #2D1044;
+            color: #2d1044;
           }
         }
       }

@@ -13,6 +13,7 @@ function Page() {
 
   const [posts, setPosts] = useState([]);
   const myUser = JSON.parse(localStorage.getItem("user"));
+  const [isAdmin, setIsAdmin] = useState(false);
 
   async function getPage() {
     fetch(config.BACKEND_URL + "/api/page/" + page, {
@@ -26,6 +27,9 @@ function Page() {
       .then((data) => {
         console.log(data);
         setPageObj(data);
+        if (myUser.role === "Admin") {
+          setIsAdmin(true);
+        }
       })
       .catch((error) => console.error(error));
   }
@@ -157,7 +161,7 @@ function Page() {
         </div>
         <div className="posts">
           {posts.map((post, key) => (
-            <Post post={post} me={myUser} key={key} />
+            <Post post={post} me={myUser} key={key} admin={isAdmin} />
           ))}
         </div>
       </div>
