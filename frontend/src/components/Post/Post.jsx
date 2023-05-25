@@ -7,6 +7,7 @@ import comm from "../../public/comm.png";
 import expand from "../../public/expand.png";
 import collapse from "../../public/collapse.png";
 import submit from "../../public/submit-comm.png";
+import deletep from "../../public/deletep.png";
 
 import Comment from "./Comment/Comment";
 
@@ -34,6 +35,7 @@ function Post(props) {
   const [likeCountState, setLikeCountState] = useState(likeCount);
   const [commentsCountState, setCommentsCountState] = useState(commentCount);
   const [commentsState, setCommentsState] = useState([]);
+  const isAdmin = props.admin;
 
   useEffect(() => {
     if (props.post.likes.indexOf(props.me._id) !== -1) {
@@ -96,6 +98,21 @@ function Post(props) {
       .catch((error) => console.error(error));
   }
 
+  function handleDelete() {
+    fetch(config.BACKEND_URL + "/api/post/" + props.post._id, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((data) => {
+        console.log(data);
+        window.location.reload();
+      })
+      .catch((error) => console.error(error));
+  }
+
   const onChangeComment = (e) => {
     setComment(e.target.value);
   };
@@ -135,6 +152,13 @@ function Post(props) {
               <h2>{commentsCountState}</h2>
               <img src={comm} />
             </div>
+            {isAdmin ? (
+              <div className="comm" onClick={handleDelete}>
+                <img src={deletep} />
+              </div>
+            ) : (
+              <div />
+            )}
           </div>
           {image !== "" ? (
             <div className="expand">

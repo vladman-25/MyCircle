@@ -4,66 +4,65 @@
   padding-bottom: 5vh;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
-  background: #A06CD5;
+  background: #a06cd5;
 
   h1 {
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 600;
     font-size: 30px;
     line-height: 47px;
     text-align: center;
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   h2 {
     margin-top: 1vh;
     margin-bottom: -1vh;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 38px;
     margin-left: 10%;
-    color: #F2EBFB;
+    color: #f2ebfb;
   }
   input {
     border: none;
     margin-left: 10%;
     width: 80%;
     height: 4vh;
-    background: #F2EBFB;
+    background: #f2ebfb;
     border-radius: 10px;
   }
 
   h3 {
     margin-top: -0.5vh;
     margin-bottom: -1.5vh;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 600;
     font-size: 15px;
     line-height: 28px;
     margin-left: 10%;
-    color: #F08080;
+    color: #f08080;
   }
 
-  .Buton{
-
+  .Buton {
     button {
-      border:none;
-      background: #F2EBFB;
+      border: none;
+      background: #f2ebfb;
       border-radius: 40px;
-      font-family: 'Roboto';
+      font-family: "Roboto";
       font-style: normal;
       font-weight: 600;
       font-size: 20px;
       line-height: 47px;
       margin-top: 5vh;
       margin-left: 35%;
-      width:30%;
+      width: 30%;
       height: 10%;
-      color: #4F4557;
+      color: #4f4557;
     }
   }
 }

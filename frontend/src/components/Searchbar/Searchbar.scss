@@ -1,89 +1,89 @@
 .search-container {
-    background: #FFFFFF;
-    border-radius: 30px;
+  background: #ffffff;
+  border-radius: 30px;
+  margin: auto;
+  width: 90%;
+  margin-top: 20px;
+
+  .search-top {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #2d1044;
     margin: auto;
-    width: 90%;
-    margin-top: 20px;
-    
-    .search-top{
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid #2D1044;
-        margin: auto;
-        width: 95%;
-        padding-bottom: 10px;
+    width: 95%;
+    padding-bottom: 10px;
 
-        .searchbar-text {
-            margin-top: 8px;
-            margin-left: 10px;
-            width: 90%;
-            input {
-                font-family: 'Roboto';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 30px;
-                line-height: 35px;
-                border: 0;
-                background: none;
-                width: 90%;
-                color: rgba(45, 16, 68, 0.5);
-            }
-            input:focus {
-                outline: none;
-            }
-        }
-    
-        .search-img {
-            img {
-                width: 30px;
-                height: auto;
-                margin-top: 8px;
-                margin-right: 10px;
-            }
-        }
-    }
-
-    .result {
-        margin-top: 5px;
-        margin-left: 20px;
-        display: flex;
-
-        .result-img {
-            margin: 0;
-            img {
-                width: 40px;
-                height: auto;
-                border-radius: 50%;
-            }
-        }
-
-        .result-text {
-            margin: 0;
-            h1 {
-                font-family: 'Roboto';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 30px;
-                line-height: 35px;
-                color: #6247AA;
-                margin: 0;
-            }
-        }
-    }
-
-    h1 {
-        font-family: 'Roboto';
+    .searchbar-text {
+      margin-top: 8px;
+      margin-left: 10px;
+      width: 90%;
+      input {
+        font-family: "Roboto";
         font-style: normal;
         font-weight: 500;
-        font-size: 15px;
+        font-size: 30px;
         line-height: 35px;
-        color: #6247AA;
-        text-align: center;
+        border: 0;
+        background: none;
+        width: 90%;
+        color: rgba(45, 16, 68, 0.5);
+      }
+      input:focus {
+        outline: none;
+      }
     }
+
+    .search-img {
+      img {
+        width: 30px;
+        height: auto;
+        margin-top: 8px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .result {
+    margin-top: 5px;
+    margin-left: 20px;
+    display: flex;
+
+    .result-img {
+      margin: 0;
+      img {
+        width: 40px;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+
+    .result-text {
+      margin: 0;
+      h1 {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 35px;
+        color: #6247aa;
+        margin: 0;
+      }
+    }
+  }
+
+  h1 {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 35px;
+    color: #6247aa;
+    text-align: center;
+  }
 }
 
 @media only screen and (max-width: 850px) {
-    .search-container {
-        width: 80%;
-    }
+  .search-container {
+    width: 80%;
+  }
 }

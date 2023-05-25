@@ -15,11 +15,12 @@ app.use(express.urlencoded({
 }))
 app.use(express.json());
 app.use(express.static('./uploads'))
-const corsOptions ={
+const corsOptions = {
     origin:'https://mycircle.live',
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
+// const corsOptions = {}
 app.use(cors(corsOptions));
 const mainRoutes = require("./routes/api.routes")
 app.use("/api", mainRoutes)

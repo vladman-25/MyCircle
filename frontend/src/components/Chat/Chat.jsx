@@ -6,7 +6,7 @@ import Auth from "../../modules/Auth";
 import ScrollToBottom from "react-scroll-to-bottom";
 const config = require("../../config.json");
 
-const socket = io(config.BACKEND_URL, {
+const socket = io(config.BACKEND_URL_CHAT, {
   transports: ["websocket"],
   autoConnect: false,
 });
